@@ -12,12 +12,27 @@ import { ProductList } from "./components";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+//dom: dev-qtb7c8kc5q1ax3ql.au.auth0.com
+
+//client: WhmHZpRksOPjH7mGMELm9EAJSpWoJgWv
+
 root.render(
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>
+  <Auth0Provider
+    domain="dev-qtb7c8kc5q1ax3ql.au.auth0.com"
+    clientId="WhmHZpRksOPjH7mGMELm9EAJSpWoJgWv"
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+    cacheLocation="localstorage"
+  >
+    <UserProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
+    </UserProvider>
+  </Auth0Provider>
 );
